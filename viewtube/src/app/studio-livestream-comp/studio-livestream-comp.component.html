@@ -1,0 +1,98 @@
+    <br>
+    <h1 class="mat-h1" style="margin-left: 20px;">Live Stream Editor</h1>
+<form [formGroup]="liveStreamEventForm" novalidate style="margin-left: 20px;" >
+    <mat-form-field class="example-full-width" appearance="fill" style="width: 650px;">
+    <mat-label>Add Title</mat-label>
+    <input type="text"  matInput  formControlName="lsEventTitle" >
+  </mat-form-field><br>
+  <div *ngIf="liveStreamEventForm.controls['lsEventTitle'].hasError('required')" style=" color: red;margin-left: 40px;margin-top: -20px;">
+    <small>*Required</small></div><br>
+
+
+
+  <mat-form-field appearance="fill"> 
+    <mat-label>Event Start date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="lsEventStartDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill" style="margin-left: 5px;">
+    <mat-label>Event Start Time</mat-label>
+    <input matInput type="time"   formControlName="lsEventStartTime">   
+</mat-form-field>
+  
+  <mat-form-field class="example-full-width" appearance="fill" style="margin-left: 5px;">
+    <mat-label>Event End Time</mat-label>
+    <input matInput type="time"   formControlName="lsEventEndTime">   
+</mat-form-field>
+
+<mat-form-field appearance="fill" style="margin-left: 5px;"> 
+  <mat-label>Event End date</mat-label>
+  <input matInput [matDatepicker]="picker2" formControlName="lsEventEndDate">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
+
+<div *ngIf="liveStreamEventForm.controls['lsEventStartDate'].hasError('required')" style=" color: red;margin-left: 120px;margin-top: -20px;">
+  <small>*Required</small></div>
+<div *ngIf="liveStreamEventForm.controls['lsEventStartDate'].hasError('validateStartDate')" style=" color: red;margin-left: 470px;margin-top: -20px;">
+  <small><h1>Invalid Date</h1></small></div>
+<div *ngIf="liveStreamEventForm.controls['lsEventStartTime'].hasError('required')" style=" color: red;margin-left: 310px;margin-top: -20px;">
+  <small>*Required</small></div>
+
+  <div *ngIf="liveStreamEventForm.controls['lsEventEndDate'].hasError('validateEndDate')" style=" color: red;margin-left: 570px;margin-top: -20px;">
+    <small>Invalid Date</small></div>
+    <div *ngIf="liveStreamEventForm.controls['lsEventEndTime'].hasError('required')" style=" color: red;margin-left: 510px;margin-top: -20px;">
+      <small>*Required</small></div>
+      <div *ngIf="liveStreamEventForm.controls['lsEventEndDate'].hasError('required')" style=" color: red;margin-left: 770px;margin-top: -20px;">
+        <small>*Required</small></div>
+        
+          <br>
+
+  <h2>Event details</h2>
+  <div style="float: left;">   
+     <mat-form-field class="example-full-width" appearance="fill" style="width: 420px;">
+        <mat-label>Add Event Details</mat-label>
+        <textarea matInput placeholder="Enter Description" formControlName="eventDetails" style="height: 200px;"></textarea>   
+    </mat-form-field><br>
+
+    <div *ngIf="liveStreamEventForm.controls['eventDetails'].hasError('required')" style=" color: red;margin-left: 150px;margin-top: -20px;">
+      <small>*Required</small></div><br>
+    </div>
+
+
+<div style="float:left;display: inline-block; width: 830px; margin-left:20px ;padding-bottom: 50px; " >
+<mat-form-field class="example-chip-list" appearance="fill">
+  <mat-label>Guests</mat-label>
+  <mat-chip-list #chipList aria-label="Fruit selection">
+    <mat-chip *ngFor="let guest of guests" (removed)="remove(guest)">
+      {{guest.email}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input placeholder="Enter Email Id"
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)"
+           formControlName="guestlist" style="margin-top: 50px;">
+  </mat-chip-list>
+</mat-form-field>
+<br>
+<div *ngIf="liveStreamEventForm.controls['guestlist'].hasError('required')" style=" color: red;margin-left: 200px;margin-top: -20px;">
+  <small>*Required</small></div>
+  <div *ngIf="liveStreamEventForm.controls['guestlist'].hasError('')" style=" color: red;margin-left: 270px;margin-top: -20px;">
+    <small>Invalid Email</small></div>
+  </div>
+<br>
+
+<button mat-raised-button style="background-color:rgba(200, 14, 85, 0.897);color: white; clear: both; display: block;" [disabled]="!liveStreamEventForm.valid">Save</button>
+
+</form>
+
+<!-- <app-register></app-register>
+<app-login></app-login> -->

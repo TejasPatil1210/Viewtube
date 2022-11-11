@@ -1,0 +1,29 @@
+<br><br>
+<form [formGroup]="registerForm" style="margin-left: 130px;">
+    <h1>Register</h1>
+    <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="rfemail">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="rfpass">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Confirm Password</mat-label>
+          <input type="password" matInput formControlName="rfconfpass">
+        </mat-form-field>
+      </p>
+      <section class="example-section">
+        <mat-checkbox class="example-margin" formControlName="rfchecked">Allow Scheduling Live Stream</mat-checkbox>
+        <!-- <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox> -->
+      </section>
+     <button mat-stroked-button style="color:rgba(220, 16, 94, 0.968); margin-left: 22px; border: 1px solid grey;" [disabled]="registerForm.invalid" (click)="saveDetails()">Register</button>
+      <button mat-stroked-button style="color:rgba(220, 16, 94, 0.968); margin-left: 35px; border: 1px solid grey;">Login</button>
+
+</form>

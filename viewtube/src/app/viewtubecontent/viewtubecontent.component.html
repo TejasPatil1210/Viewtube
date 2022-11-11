@@ -1,0 +1,42 @@
+<app-chips-bar-comp style="display: block; background-color: black;"></app-chips-bar-comp>
+<div class="grid-container" style="display:block; background-color:rgba(0, 0, 0, 0.889)"> 
+  <mat-grid-list cols="4" rowHeight="350px">
+    <!-- <div *ngFor="let video of video$"> -->
+    <mat-grid-tile *ngFor="let card of video$ | async" [colspan]="1" [rowspan]="1">
+      <mat-card matRipple class="dashboard-card" style="background-color: rgb(58, 54, 54);color: white;">
+        <!-- <mat-card-header class="dashboard-card-header">
+        </mat-card-header> -->
+        <a href="#"> <img src={{card.snippet.thumbnails.medium.url}} style="width:325px;height:150px;margin-top:-16px;margin-left:-16px; position:absolute;z-index: 0;
+          position:relative;"/></a>
+            <div> 
+            <small style="position:absolute;z-index:1;background-color: black;color: white;margin-left:250px;top: 45%;
+            right: 4%;
+            width: auto;
+            height: 20px;
+            text-align: right;
+            padding: 1px 6px;">
+              {{ card.contentDetails.length }} </small>
+            </div>
+            <br>
+        <mat-card-content class="dashboard-card-content">
+            <!-- <div style="margin-top:170px;position: relative;"> -->
+              <!-- <mat-card-title style="font-size:20px"> -->
+             <h5> {{card.snippet.title}}</h5>
+            <!-- </mat-card-title> -->
+          <!-- </div> -->
+          <!-- <div style="margin-top: 10px; position:relative;"> -->
+              <p>{{card.snippet.channelTitle}}</p>
+            <!-- </div> -->
+            <!-- <div style="position: relative;margin-top:-10px;"> -->
+            <p>
+              {{card.statistics.viewCount}} views. {{card.snippet.relativeTime}}              
+            </p>
+          <!-- </div> -->
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  <!-- </div> -->
+  </mat-grid-list>
+</div>
+
+

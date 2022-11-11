@@ -1,0 +1,75 @@
+<mat-toolbar  style="background-color:rgba(220, 16, 94, 0.968); color:white;padding-top: 7px;">
+ <mat-toolbar-row>
+  <button mat-icon-button aria-label="Example icon-button with a menu" (click)="drawer.toggle()">
+    <mat-icon >menu</mat-icon>
+  </button> 
+  <button mat-icon-button  *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>ViewTube</span>
+  <form>
+    <mat-form-field appearance="legacy">
+      <mat-label>Search</mat-label>
+      <input matInput  style="color:white">
+    </mat-form-field>
+    <button mat-icon-button matTooltip="Search">
+    <mat-icon matSuffix>search</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Audio Search">
+      <mat-icon matSuffix>mic</mat-icon>
+      </button>
+    </form>
+    <div class="menubtn">
+    <button mat-icon-button matTooltip="Notifications"><mat-icon>notifications</mat-icon></button>
+    <button mat-icon-button matTooltip="Create Video"><mat-icon><a routerLink="/studioUrl/uploadvid" style="color: white">video_call</a></mat-icon></button>
+    <button mat-icon-button matTooltip="Apps"><mat-icon>apps</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="menu1" matTooltip="Manage Profile"><mat-icon>person_outline</mat-icon></button>
+  </div>
+  <mat-menu #menu1="matMenu">
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+    <button mat-menu-item >
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>feedback</mat-icon>
+      <span>Send Feedback</span>
+    </button>
+  </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" 
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === true"  style="background-color:rgba(0, 0, 0, 0.747); color:white">
+      <!-- <mat-sidenav #drawer opened="false" [mode]="(isHandset$ | async) ? 'over' : 'side'" style="background-color:rgba(0, 0, 0, 0.747); color:white"> -->
+    <!-- <mat-toolbar>Menu</mat-toolbar> -->
+    <mat-nav-list style="color:white">
+      <a mat-list-item href="#" style="color:white"><mat-icon>home</mat-icon><pre> </pre><span>Home</span></a>
+      <a mat-list-item href="#" style="color:white"><mat-icon>explore</mat-icon><pre> </pre><span>Explore</span></a>
+      <a mat-list-item href="#" style="color:white"><mat-icon>subscriptions</mat-icon><pre> </pre><span>Subscriptions</span></a>
+      <a mat-list-item href="#" style="color:white"><mat-icon>video_library</mat-icon><pre> </pre><span>Library</span></a>
+      <a mat-list-item href="#" style="color:white"><mat-icon>history</mat-icon><pre> </pre><span>History</span></a>
+    </mat-nav-list>
+    <hr>
+    <p style="padding-left:20px; margin-top: 15px;">Sign in to like videos, comment and subscribe.</p>
+    <button mat-stroked-button style="color:rgba(220, 16, 94, 0.968); margin-left: 35px; border: 1px solid grey;"><mat-icon>account_circle</mat-icon>SIGN IN</button>
+  </mat-sidenav>
+   <mat-sidenav-content> 
+    <router-outlet style="display:block; background-color:rgba(0, 0, 0, 0.889)"></router-outlet>    
+    <!-- Add Content Here -->
+    <!-- <app-viewtubecontent style="display:block; background-color:rgba(0, 0, 0, 0.889)"></app-viewtubecontent>  -->
+    <!-- <app-studio-upload-comp></app-studio-upload-comp> -->
+    
+    <!-- <app-studio-livestream-comp></app-studio-livestream-comp> -->
+  </mat-sidenav-content> 
+</mat-sidenav-container>

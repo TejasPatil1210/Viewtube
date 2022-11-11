@@ -1,0 +1,143 @@
+<!-- <p style="color: white">studio-upload-comp works!</p> -->
+<br>
+<form ngNativeValidate #myform="ngForm" style="margin-left: 10px;" >
+  <h1 class="mat-h1" style="margin-left: 10px; display: inline-block;">Video Details</h1>
+ 
+  <button mat-raised-button style="background-color:rgba(200, 14, 85, 0.897);color: white; margin-left: 405px; margin-top: 0px;" [disabled]="!myform.valid">Save</button>
+<br>
+<br>
+    <mat-form-field class="example-full-width" appearance="fill" style="width:620px;">
+    <mat-label style="font-size:16px;">Video Url</mat-label>
+    <input type="text" appVideoUrldir matInput required name="t1"  ngModel #videoUrl >
+  </mat-form-field><br>
+  <div [hidden]="myform.valid || myform.pristine" style=" color: red; margin-left:70px; margin-top:20px;">Invalid Url</div><br>
+  
+    <mat-form-field class="example-full-width" appearance="fill" style="width:620px;">
+        <mat-label style="font-size:16px;">Title</mat-label>
+        <input type="text" matInput name="t2" required maxlength="120"  ngModel #videoTitle>
+    </mat-form-field><br>
+    <div [hidden]="myform.valid || myform.pristine" style=" color: red; margin-left:10px; margin-top:20px;">Video Title maxLength Required i.e.120</div><br>
+    
+    
+    
+    <mat-form-field class="example-full-width" appearance="fill" style="width:620px;">
+        <mat-label style="font-size:16px;">Description</mat-label>
+        <textarea matInput placeholder="Enter Description" name="t3" ngModel #videoDescription style="height:110px"></textarea>   
+    </mat-form-field><br>
+      
+
+   
+    <mat-form-field class="example-full-width" appearance="fill" style="width:620px;">
+        <mat-label style="font-size:16px;">Video Duration</mat-label>
+        <input type="text" appVideoDurationdir matInput required  name="t4" ngModel #videoDuration>
+    </mat-form-field><br>
+    <div [hidden]="myform.valid || myform.pristine" style=" color: red; margin-left:180px; margin-top:-20px;">Invalid Video Duration</div><br>
+    
+
+    
+    <mat-form-field class="example-full-width" appearance="fill" style="width:620px;">
+        <mat-label style="font-size:16px;">Channel Title</mat-label>
+        <input type="text" matInput name="t5" required ngModel #channelTitle>
+    </mat-form-field><br>
+    <div [hidden]="myform.valid || myform.pristine" style=" color: red; margin-left:130px; margin-top:-20px;">*Required</div><br>
+
+    <h2>Audience</h2>
+   
+    <h3 style="font-size: 18px;">Is this video made for kids?</h3>
+    <mat-radio-group aria-label="Select an option">
+      <h3 style="font-size: 16px;"><mat-radio-button value="1" >Yes,its made for Kids  </mat-radio-button></h3>
+      <h3 style="font-size: 16px;"><mat-radio-button value="2">Not for Kids</mat-radio-button></h3>  
+      </mat-radio-group>
+      <br>
+    
+    
+    <h3 style="font-size: 18px;">Age Restriction</h3>
+    <mat-radio-group aria-label="Select an option">
+      <h3 style="font-size: 16px;"><mat-radio-button value="1" >Yes, Restrict my videos to viewers over 18</mat-radio-button></h3>
+      <h3 style="font-size: 16px;"><mat-radio-button value="2">No, don't restrict my videos to viewers over 18</mat-radio-button></h3>
+      </mat-radio-group>
+      <br>
+    
+
+      <h3 style="font-size: 18px;">Recording Date</h3>
+      <mat-form-field appearance="fill" style="width:300px;"> 
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br> 
+      <br>
+      
+      
+      <h3 style="font-size: 18px;">Video Location</h3>
+      <mat-form-field appearance="fill" style="width:300px;">
+        <mat-label>Select Country</mat-label>
+        <mat-select>
+          <mat-option selected>None</mat-option>
+          <mat-option value="option1">India</mat-option>
+          <mat-option value="option2">Australia</mat-option>
+          <mat-option value="option3">South Africa</mat-option>
+          <mat-option value="option3">England</mat-option>
+          <mat-option value="option3">Ireland</mat-option>
+          <mat-option value="option3">New Zealand</mat-option>
+          <mat-option value="option3">Sri Lanka</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <br>
+
+      <h3 style="font-size: 18px;">License</h3>
+      <mat-form-field appearance="fill" style="width:300px;">
+        <mat-label>Select License</mat-label>
+        <mat-select>
+          <mat-option selected>None</mat-option>
+          <mat-option value="option1" >Standard Viewtube License</mat-option>
+          <mat-option value="option2">Creative Common License</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <br>
+      <h3 style="font-size: 18px;">Distribution</h3> 
+      <mat-form-field appearance="fill" style="width:300px;">
+        <mat-label>Select Distribution</mat-label>
+        <mat-select>
+          <mat-option selected>None</mat-option>
+          <mat-option value="option1" >Everywhere</mat-option>
+          <mat-option value="option2">Make this video available only on monetized platforms</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <br>
+      <h3 style="font-size: 18px;">Video Category</h3>
+      <mat-form-field appearance="fill" style="width:300px;">
+        <mat-label>Select Video Category</mat-label>
+        <mat-select>
+          <mat-option selected>None</mat-option>
+          <mat-option value="option1">Film & Animation</mat-option>
+          <mat-option value="option2">Autos & Vehicles</mat-option>
+          <mat-option value="option3">Music</mat-option>
+          <mat-option value="option4">Pets & Animals</mat-option>
+          <mat-option value="option5">Sports</mat-option>
+          <mat-option value="option6">Travel & Events</mat-option>
+          <mat-option value="option7">Gaming</mat-option>
+          <mat-option value="option8">People & Blogs</mat-option>
+          <mat-option value="option9">Comedy</mat-option>
+          <mat-option value="option10">Entertainment</mat-option>
+          <mat-option value="option11">News & Politics</mat-option>
+          <mat-option value="option12">Howto & Style</mat-option>
+          <mat-option value="option13">Education</mat-option>
+          <mat-option value="option14">Science & Technology</mat-option>
+          <mat-option value="option15">Nonprofits & Activism</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+        <br>
+        <h3 style="font-size: 18px;">Visibility</h3>
+    <mat-radio-group aria-label="Select an option" required>
+      <h3 style="font-size: 16px;"><mat-radio-button value="1" >Private</mat-radio-button></h3>
+      <h3 style="font-size: 16px;"><mat-radio-button value="2">Public</mat-radio-button></h3>
+      </mat-radio-group>
+      <br>
+</form>

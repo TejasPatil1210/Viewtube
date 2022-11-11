@@ -1,0 +1,20 @@
+<br><br>
+<form [formGroup]="loginForm" style="margin-left: 130px;">
+    <h1>Login</h1>
+    <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="lgemail">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="lgpass">
+        </mat-form-field>
+      </p>
+      <a routerLink="/accounts/register"><button mat-stroked-button style="color:rgba(220, 16, 94, 0.968); margin-left: 22px; border: 1px solid grey;">
+        Register</button></a>
+      <button mat-stroked-button style="color:rgba(220, 16, 94, 0.968); margin-left: 35px; border: 1px solid grey;" [disabled]="loginForm.invalid" (click)="acclogin()">Login</button>
+      <router-outlet></router-outlet>
+</form>

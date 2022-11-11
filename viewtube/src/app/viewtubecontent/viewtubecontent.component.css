@@ -1,0 +1,44 @@
+/* .grid-container {
+  margin:;
+} */
+
+.dashboard-card {
+  /* position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px; */
+  width: 293px;
+    height: 250px;
+    display: inline-block;
+    margin: 20px;
+
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+.dashboard-card-header{
+  text-align:center ;
+  margin-top: -100px;
+}
+
+.dashboard-card h5{
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  letter-spacing: .25px;
+  font-weight: 500;
+  font-size: 1.15em;
+  -webkit-line-clamp: 2;
+  margin-top:-10px;
+  position: relative;
+}
